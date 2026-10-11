@@ -1,0 +1,7 @@
+# TAVISH & CO. — static storefront
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /_build/
+
+Sitemap: https://tavishandco.example/sitemap.xml

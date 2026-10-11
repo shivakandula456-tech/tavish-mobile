@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in | TAVISH &amp; CO. Admin</title>
+  <meta name="description" content="Client-side sign-in for the TAVISH & CO. admin console. No server, no real access control.">
+  <link rel="canonical" href="https://tavishandco.example/admin/login.html">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fbf8f3">
+  <link rel="icon" href="../assets/images/brand/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="../assets/images/brand/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../assets/images/brand/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/heritage-shopping-v10.css">
+</head>
+<body class="login-wrap" data-admin-page="login">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <main class="login-card" id="main">
+    <img src="../assets/images/brand/tavish-co-logo.png" alt="TAVISH &amp; CO." width="190" height="119">
+    <h1>Administration</h1>
+    <p class="lede">Secure catalogue administration</p>
+
+    <div class="alert alert--error" data-login-error hidden></div>
+    <div class="alert alert--success" data-login-status hidden role="status"></div>
+
+    <form class="stack" data-login-form novalidate>
+      <label class="field"><span class="field__label">Email address</span>
+        <input class="input" type="email" name="username" autocomplete="username" required>
+      </label>
+      <label class="field"><span class="field__label">Password</span>
+        <input class="input" type="password" name="password" autocomplete="current-password" required>
+      </label>
+      <div class="row">
+        <button class="btn btn--outline btn--small" type="button" data-login-reveal aria-pressed="false">Show</button>
+        <button class="btn btn--gold" type="submit">Sign in</button>
+      </div>
+    </form>
+
+    <p class="form-note mt-5">Use the authorised Supabase Auth account after configuring the project. Admin sign-in remains disabled until Supabase is configured.</p>
+    <p class="form-note"><a class="link-underline" href="../index.html">Back to the storefront</a></p>
+  </main>
+
+  <script src="../data/settings.js"></script>
+  <script src="../data/categories.js"></script>
+  <script src="../data/products.js"></script>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="../assets/js/supabase-catalogue-v11.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

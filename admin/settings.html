@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings | TAVISH &amp; CO. Admin</title>
+  <meta name="description" content="Settings — client-side administration for TAVISH &amp; CO. Data is stored in this browser only.">
+  <link rel="canonical" href="https://tavishandco.example/admin/settings.html">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fbf8f3">
+  <link rel="icon" href="../assets/images/brand/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="../assets/images/brand/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../assets/images/brand/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/heritage-shopping-v10.css">
+</head>
+<body data-admin-page="settings">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="admin-shell" data-admin-shell>
+    <aside class="admin-side" data-admin-side aria-label="Admin sidebar">
+      <div class="admin-side__brand">
+        <div><strong>Tavish &amp; Co.</strong><span>Administration</span></div>
+        <button class="admin-side__close" type="button" data-admin-close aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="admin-nav" aria-label="Admin">
+        <p class="admin-nav__label">Overview</p>
+        <a href="dashboard.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-dashboard"></use></svg> Dashboard</a>
+        <p class="admin-nav__label">Catalogue</p>
+        <a href="products.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-list"></use></svg> Products</a>
+        <a href="categories.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-layers"></use></svg> Categories</a>
+        <a href="media.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-image"></use></svg> Media</a>
+        <p class="admin-nav__label">Sales</p>
+        <a href="orders.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-receipt"></use></svg> Orders</a>
+        <a href="newsletter.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg> Newsletter</a>
+        <p class="admin-nav__label">System</p>
+        <a href="settings.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-sliders"></use></svg> Settings</a>
+        <a href="audit.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-clock"></use></svg> Audit log</a>
+      </nav>
+      <div class="admin-side__foot">
+        <p data-admin-demo-note>Client-side administration — data stays in this browser.</p>
+      </div>
+    </aside>
+
+    <div class="admin-scrim" data-admin-scrim></div>
+
+    <div class="admin-main">
+      <div class="admin-top">
+        <div class="row">
+          <button class="btn btn--outline btn--small admin-menu-btn" type="button" data-admin-menu aria-label="Open menu">Menu</button>
+          <h1 class="admin-top__title" data-admin-title>Settings</h1>
+        </div>
+        <div class="admin-top__actions">
+          <span class="form-note">Signed in as <strong data-admin-user>admin</strong></span>
+          <a class="btn btn--outline btn--small" href="../index.html">View shop</a>
+          <button class="btn btn--outline btn--small" type="button" data-admin-logout>Sign out</button>
+        </div>
+      </div>
+
+      <main class="admin-body" id="main">
+        <p class="lede">Brand details, shop policies and backups. Values are read and written to this browser's local storage.</p>
+
+        <form class="panel mt-5" data-settings-form="brand">
+          <div class="panel__head"><h2>Brand &amp; contact</h2></div>
+          <div class="panel__body">
+            <div class="form-row">
+              <label class="field"><span class="field__label">Brand name</span>
+                <input class="input" data-setting="brand.name">
+              </label>
+              <label class="field"><span class="field__label">Tagline</span>
+                <input class="input" data-setting="brand.tagline">
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span class="field__label">Contact email</span>
+                <input class="input" type="email" data-setting="contact.email">
+              </label>
+              <label class="field"><span class="field__label">WhatsApp display number</span>
+                <input class="input" data-setting="contact.whatsappDisplay">
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span class="field__label">WhatsApp number (digits only)</span>
+                <input class="input" data-setting="contact.whatsappNumber">
+              </label>
+              <label class="field"><span class="field__label">Location</span>
+                <input class="input" data-setting="contact.location">
+              </label>
+            </div>
+            <label class="field"><span class="field__label">Enquiry hours</span>
+              <input class="input" data-setting="contact.hours">
+            </label>
+            <div class="row"><button class="btn btn--gold btn--small" type="submit">Save brand &amp; contact</button></div>
+          </div>
+        </form>
+
+        <form class="panel" data-settings-form="commerce">
+          <div class="panel__head"><h2>Commerce &amp; policies</h2></div>
+          <div class="panel__body">
+            <div class="form-row">
+              <label class="field"><span class="field__label">Free shipping above (INR)</span>
+                <input class="input" type="number" min="0" data-setting="commerce.freeShippingAbove">
+              </label>
+              <label class="field"><span class="field__label">Standard shipping fee (INR)</span>
+                <input class="input" type="number" min="0" data-setting="commerce.shippingFee">
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span class="field__label">Cash on delivery limit (INR)</span>
+                <input class="input" type="number" min="0" data-setting="commerce.codMaxOrderValue">
+              </label>
+              <label class="field"><span class="field__label">Dispatch days</span>
+                <input class="input" data-setting="commerce.dispatchDays">
+              </label>
+            </div>
+            <div class="form-row">
+              <label class="field"><span class="field__label">Delivery estimate</span>
+                <input class="input" data-setting="commerce.deliveryEstimate">
+              </label>
+              <label class="field"><span class="field__label">Returns window (days)</span>
+                <input class="input" type="number" min="0" data-setting="commerce.returnsWindowDays">
+              </label>
+            </div>
+            <label class="checkbox mt-4"><input type="checkbox" data-setting="commerce.cashOnDelivery"><span>Offer cash on delivery</span></label>
+            <div class="row mt-5"><button class="btn btn--gold btn--small" type="submit">Save commerce settings</button></div>
+          </div>
+        </form>
+
+        <form class="panel" data-settings-form="seo">
+          <div class="panel__head"><h2>SEO</h2></div>
+          <div class="panel__body">
+            <label class="field"><span class="field__label">Canonical base URL</span>
+              <input class="input" data-setting="seo.base">
+            </label>
+            <label class="field"><span class="field__label">Default page title</span>
+              <input class="input" data-setting="seo.defaultTitle">
+            </label>
+            <label class="field"><span class="field__label">Default description</span>
+              <textarea class="textarea" rows="3" data-setting="seo.defaultDescription"></textarea>
+            </label>
+            <div class="row"><button class="btn btn--gold btn--small" type="submit">Save SEO settings</button></div>
+          </div>
+        </form>
+
+        <form class="panel" data-settings-form="admin">
+          <div class="panel__head"><h2>Admin credentials</h2></div>
+          <div class="panel__body">
+            <div class="form-row">
+              <label class="field"><span class="field__label">Username</span>
+                <input class="input" autocomplete="off" data-setting="admin.username">
+              </label>
+              <label class="field"><span class="field__label">Password</span>
+                <input class="input" type="password" autocomplete="off" data-setting="admin.password">
+              </label>
+            </div>
+            <p class="admin-note">These credentials are compared inside your own browser and provide no real protection. A production deployment would need server-side authentication.</p>
+            <div class="row mt-5"><button class="btn btn--gold btn--small" type="submit">Save credentials</button></div>
+          </div>
+        </form>
+
+        <div class="panel">
+          <div class="panel__head"><h2>Backup &amp; data management</h2></div>
+          <div class="panel__body">
+            <div class="row">
+              <button class="btn btn--gold btn--small" type="button" data-backup-export>Download backup (JSON)</button>
+              <button class="btn btn--outline btn--small" type="button" data-backup-reset>Factory reset local store</button>
+              <button class="btn btn--outline btn--small" type="button" data-clear-orders>Clear orders</button>
+              <button class="btn btn--outline btn--small" type="button" data-clear-audit>Clear audit log</button>
+            </div>
+            <div class="divider mt-5"></div>
+            <label class="field mt-5"><span class="field__label">Restore from a backup file</span>
+              <input class="input" type="file" accept="application/json,.json" data-backup-file>
+            </label>
+            <label class="field"><span class="field__label">…or paste backup JSON</span>
+              <textarea class="textarea" rows="4" placeholder='{"format":"tavish-backup", …}' data-backup-json></textarea>
+            </label>
+            <div class="row"><button class="btn btn--outline btn--small" type="button" data-backup-import>Restore pasted backup</button></div>
+            <div class="divider mt-5"></div>
+            <label class="field mt-5"><span class="field__label">Import catalogue JSON (products only — matching SKUs are updated)</span>
+              <textarea class="textarea" rows="4" placeholder='[{"sku":"TAV-EAR-001", …}]' data-catalogue-json></textarea>
+            </label>
+            <div class="row">
+              <button class="btn btn--outline btn--small" type="button" data-catalogue-import>Import catalogue</button>
+              <span class="form-note">Backups contain this browser’s catalogue, orders, settings and local activity. Centralized server storage and server-side authentication are not available in this static architecture.</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="admin-modal" data-admin-modal hidden>
+    <div class="admin-modal__card" role="alertdialog" aria-modal="true" aria-labelledby="adminModalTitle" aria-describedby="adminModalText">
+      <h3 id="adminModalTitle" data-admin-modal-title>Confirm</h3>
+      <p id="adminModalText" data-admin-modal-text></p>
+      <div class="row row--end">
+        <button class="btn btn--outline btn--small" type="button" data-admin-modal-cancel>Cancel</button>
+        <button class="btn btn--gold btn--small" type="button" data-admin-modal-ok>Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../data/settings.js"></script>
+  <script src="../data/categories.js"></script>
+  <script src="../data/products.js"></script>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="../assets/js/supabase-catalogue-v11.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

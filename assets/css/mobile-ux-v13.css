@@ -1,0 +1,70 @@
+/* TAVISH & CO. V13 — mobile UX polish. Scoped to tablet/phone so V7 desktop stays intact. */
+@media (max-width: 1023px) {
+  /* The product purchase bar must sit ABOVE the fixed four-item tab bar. */
+  .sticky-cta {
+    bottom: calc(62px + env(safe-area-inset-bottom));
+    padding: 0.65rem max(0.85rem, env(safe-area-inset-left)) 0.65rem max(0.85rem, env(safe-area-inset-right));
+    z-index: 108;
+    gap: 0.55rem;
+  }
+  body.has-sticky-cta {
+    padding-bottom: calc(144px + env(safe-area-inset-bottom));
+  }
+  body.has-sticky-cta .wa-float {
+    bottom: calc(138px + env(safe-area-inset-bottom));
+  }
+  .sticky-cta .btn {
+    min-height: 46px;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  /* Consistent mobile Quick Add sizing and clear focus feedback. */
+  .pcard__quick {
+    min-height: 42px;
+    border-radius: 2px;
+    font-size: 0.69rem;
+    letter-spacing: 0.055em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pcard__quick:focus-visible,
+  .mobile-tabbar__item:focus-visible,
+  .header-actions .icon-btn:focus-visible,
+  .burger:focus-visible,
+  .sticky-cta .btn:focus-visible {
+    outline: 2px solid var(--gold-deep);
+    outline-offset: 3px;
+  }
+
+  /* Leave room for fixed controls when opening a product or using anchors. */
+  .product-details, .product-info, [data-product-info] {
+    scroll-margin-bottom: calc(150px + env(safe-area-inset-bottom));
+  }
+  .tc-gallery-hint {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.035em;
+  }
+}
+
+@media (max-width: 380px) {
+  .sticky-cta { gap: 0.4rem; padding-inline: 0.55rem; }
+  .sticky-cta .btn { padding-inline: 0.65rem; font-size: 0.7rem; }
+  .mobile-tabbar { padding-inline: 4px; }
+  .mobile-tabbar__item { font-size: 0.62rem; }
+  .pcard__quick { width: calc(100% - 12px); margin-inline: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .site-header *, .pcard__quick, .mobile-tabbar, .sticky-cta {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

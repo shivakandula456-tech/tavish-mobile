@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product editor | TAVISH &amp; CO. Admin</title>
+  <meta name="description" content="Product editor — client-side administration for TAVISH &amp; CO. Data is stored in this browser only.">
+  <link rel="canonical" href="https://tavishandco.example/admin/product-edit.html">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#fbf8f3">
+  <link rel="icon" href="../assets/images/brand/favicon-32.png" sizes="32x32">
+  <link rel="icon" href="../assets/images/brand/icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="../assets/images/brand/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/heritage-shopping-v10.css">
+</head>
+<body data-admin-page="product-edit">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="admin-shell" data-admin-shell>
+    <aside class="admin-side" data-admin-side aria-label="Admin sidebar">
+      <div class="admin-side__brand">
+        <div><strong>Tavish &amp; Co.</strong><span>Administration</span></div>
+        <button class="admin-side__close" type="button" data-admin-close aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="admin-nav" aria-label="Admin">
+        <p class="admin-nav__label">Overview</p>
+        <a href="dashboard.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-dashboard"></use></svg> Dashboard</a>
+        <p class="admin-nav__label">Catalogue</p>
+        <a href="products.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-list"></use></svg> Products</a>
+        <a href="categories.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-layers"></use></svg> Categories</a>
+        <a href="media.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-image"></use></svg> Media</a>
+        <p class="admin-nav__label">Sales</p>
+        <a href="orders.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-receipt"></use></svg> Orders</a>
+        <a href="newsletter.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-mail"></use></svg> Newsletter</a>
+        <p class="admin-nav__label">System</p>
+        <a href="settings.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-sliders"></use></svg> Settings</a>
+        <a href="audit.html"><svg width="17" height="17" aria-hidden="true" focusable="false"><use href="#icon-clock"></use></svg> Audit log</a>
+      </nav>
+      <div class="admin-side__foot">
+        <p data-admin-demo-note>Client-side administration — data stays in this browser.</p>
+      </div>
+    </aside>
+
+    <div class="admin-scrim" data-admin-scrim></div>
+
+    <div class="admin-main">
+      <div class="admin-top">
+        <div class="row">
+          <button class="btn btn--outline btn--small admin-menu-btn" type="button" data-admin-menu aria-label="Open menu">Menu</button>
+          <h1 class="admin-top__title" data-admin-title>Product editor</h1>
+        </div>
+        <div class="admin-top__actions">
+          <span class="form-note">Signed in as <strong data-admin-user>admin</strong></span>
+          <a class="btn btn--outline btn--small" href="../index.html">View shop</a>
+          <button class="btn btn--outline btn--small" type="button" data-admin-logout>Sign out</button>
+        </div>
+      </div>
+
+      <main class="admin-body" id="main">
+        <div data-editor-wrap>
+          <div class="row row--between">
+            <a class="btn btn--outline btn--small" href="products.html">Back to products</a>
+            <div class="row">
+              <button class="btn btn--outline btn--small" type="button" data-trash-product>Move to trash</button>
+              <button class="btn btn--outline btn--small" type="button" data-view-product>Save &amp; preview</button>
+              <button class="btn btn--gold btn--small" type="button" data-save-product>Save product</button>
+            </div>
+          </div>
+
+          <div class="admin-note mt-4" data-save-errors hidden></div>
+
+          <form class="admin-form mt-5" data-product-form>
+            <div class="stack">
+              <section class="panel">
+                <div class="panel__head"><h2>Product details</h2></div>
+                <div class="panel__body">
+                  <label class="field"><span class="field__label">Name *</span>
+                    <input class="input" name="name" required>
+                  </label>
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Slug (auto-generated)</span>
+                      <input class="input" name="slug">
+                    </label>
+                    <label class="field"><span class="field__label">SKU *</span>
+                      <input class="input" name="sku" required>
+                    </label>
+                  </div>
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Category *</span>
+                      <select class="select" name="category"></select>
+                    </label>
+                    <label class="field"><span class="field__label">Subcategory</span>
+                      <select class="select" name="subcategory"><option value="">None</option></select>
+                    </label>
+                  </div>
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Price (INR) *</span>
+                      <input class="input" type="number" name="price" min="0" step="1" required>
+                    </label>
+                    <label class="field"><span class="field__label">Sale price (INR)</span>
+                      <input class="input" type="number" name="salePrice" min="0" step="1">
+                    </label>
+                  </div>
+                  <label class="field"><span class="field__label">Description</span>
+                    <textarea class="textarea" name="description" rows="4"></textarea>
+                  </label>
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Material</span>
+                      <input class="input" name="material">
+                    </label>
+                    <label class="field"><span class="field__label">Finish</span>
+                      <input class="input" name="finish">
+                    </label>
+                  </div>
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Dimensions</span>
+                      <input class="input" name="dimensions">
+                    </label>
+                    <label class="field"><span class="field__label">Weight</span>
+                      <input class="input" name="weight">
+                    </label>
+                  </div>
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Tags (comma separated)</span>
+                      <input class="input" name="tags">
+                    </label>
+                    <label class="field"><span class="field__label">Sort order</span>
+                      <input class="input" type="number" name="sortOrder" step="1">
+                    </label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel">
+                <div class="panel__head"><h2>Product images</h2><span class="form-note" data-image-count>0 of 4 images</span></div>
+                <div class="panel__body">
+                  <div class="product-upload" data-product-upload>
+                    <label class="product-upload__drop" for="product-image-upload">
+                      <span class="product-upload__icon" aria-hidden="true">＋</span>
+                      <strong>Upload product photos</strong>
+                      <span>Choose 1–4 images from your device. JPG, PNG, or WebP.</span>
+                      <span class="btn btn--outline btn--small">Choose images</span>
+                    </label>
+                    <input id="product-image-upload" class="product-upload__input" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple data-product-upload-input>
+                    <p class="form-note" data-upload-status aria-live="polite">At least 1 image is required to save. Maximum 4 images per product.</p>
+                  </div>
+                  <div class="image-picker" data-image-picker></div>
+                  <div class="divider mt-5"></div>
+                  <p class="form-note mt-5">Or choose an existing image from the Media Library. Uploaded images are compressed and stored in this browser only.</p>
+                  <div class="admin-toolbar mt-4">
+                    <input class="input" type="search" data-lib-search placeholder="Filter files (p01, ed-02…)" aria-label="Filter media library">
+                  </div>
+                  <div class="image-picker mt-4" data-lib-grid></div>
+                  <div class="admin-toolbar mt-5">
+                    <input class="input" type="text" data-lib-custom placeholder="assets/images/your-image.jpg" aria-label="Custom image path">
+                    <button class="btn btn--outline btn--small" type="button" data-lib-custom-add>Add path</button>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <div class="stack">
+              <section class="panel">
+                <div class="panel__head"><h2>Publishing</h2></div>
+                <div class="panel__body">
+                  <div class="form-row">
+                    <label class="field"><span class="field__label">Status</span>
+                      <select class="select" name="status">
+                        <option value="DRAFT">Draft</option>
+                        <option value="ACTIVE">Active</option>
+                        <option value="HIDDEN">Hidden</option>
+                        <option value="OUT_OF_STOCK">Out of stock</option>
+                        <option value="TRASH">Trash</option>
+                      </select>
+                    </label>
+                    <label class="field"><span class="field__label">Availability</span>
+                      <select class="select" name="availability">
+                        <option value="IN_STOCK">In stock</option>
+                        <option value="OUT_OF_STOCK">Out of stock</option>
+                        <option value="MADE_TO_ORDER">Made to order</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="mt-4">
+                    <div class="switch-row"><span>Featured on the homepage</span><input class="hide" type="checkbox" name="featured"><button class="switch" type="button" data-switch="featured" aria-pressed="false" aria-label="Featured"></button></div>
+                    <div class="switch-row"><span>New arrival</span><input class="hide" type="checkbox" name="newArrival"><button class="switch" type="button" data-switch="newArrival" aria-pressed="false" aria-label="New arrival"></button></div>
+                    <div class="switch-row"><span>Best seller</span><input class="hide" type="checkbox" name="bestSeller"><button class="switch" type="button" data-switch="bestSeller" aria-pressed="false" aria-label="Best seller"></button></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="panel">
+                <div class="panel__head"><h2>Publish checklist</h2></div>
+                <div class="panel__body">
+                  <ul class="admin-check" data-publish-check></ul>
+                  <p class="form-note mt-5">Active products must satisfy every item. If requirements are unmet, saving an active product falls back to draft automatically.</p>
+                </div>
+              </section>
+            </div>
+          </form>
+        </div>
+
+        <div class="mt-5" data-editor-missing hidden>
+          <div class="empty-state">
+            <h3>Product not found</h3>
+            <p>It may have been deleted from this browser. Pick another product from the catalogue list.</p>
+            <p class="mt-4"><a class="btn btn--outline" href="products.html">Back to products</a></p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="admin-modal" data-admin-modal hidden>
+    <div class="admin-modal__card" role="alertdialog" aria-modal="true" aria-labelledby="adminModalTitle" aria-describedby="adminModalText">
+      <h3 id="adminModalTitle" data-admin-modal-title>Confirm</h3>
+      <p id="adminModalText" data-admin-modal-text></p>
+      <div class="row row--end">
+        <button class="btn btn--outline btn--small" type="button" data-admin-modal-cancel>Cancel</button>
+        <button class="btn btn--gold btn--small" type="button" data-admin-modal-ok>Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../data/settings.js"></script>
+  <script src="../data/categories.js"></script>
+  <script src="../data/products.js"></script>
+  <script src="../assets/js/storage.js"></script>
+  <script src="../supabase-config.js"></script>
+  <script src="../assets/js/supabase-catalogue-v11.js"></script>
+  <script src="../assets/js/site.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>

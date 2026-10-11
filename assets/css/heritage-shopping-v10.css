@@ -1,0 +1,112 @@
+/* TAVISH & CO. V11 — Royal Indian Heritage design system. Layouts remain based on approved V7 desktop + V8 responsive structure. */
+:root{
+ --tc-royal-ivory:#fbf7ef;--tc-royal-paper:#fffdf8;--tc-royal-ink:#28211d;--tc-royal-muted:#766b60;
+ --tc-royal-gold:#ad8746;--tc-royal-gold-light:#d5bc83;--tc-royal-burgundy:#641f2c;--tc-royal-border:#e6dccb;
+ --tc-royal-shadow:0 16px 48px rgba(55,35,20,.10);--tc-royal-serif:'Cormorant Garamond',Georgia,serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:6rem} body{background:var(--tc-royal-ivory);color:var(--tc-royal-ink)}
+::selection{background:rgba(173,135,70,.22);color:var(--tc-royal-ink)}
+/* Royal palette is applied to shared primitives without replacing desktop geometry. */
+.announce{background:var(--tc-royal-burgundy);color:#fff9ee;letter-spacing:.12em}
+.site-header:not(.is-home-overlay),.site-header.is-scrolled{background:rgba(255,253,248,.97);border-bottom:1px solid var(--tc-royal-border);backdrop-filter:blur(14px)}
+.site-header .nav-link,.site-header .header-action{transition:color .2s ease}
+.site-header .nav-link:hover,.site-header .header-action:hover{color:var(--tc-royal-gold)}
+.megamenu,.site-drawer,.modal,.filters,.cart-panel,.search-panel{border-color:var(--tc-royal-border)}
+h1,h2,h3,.section-heading,.hero__title,.pdp__title,.page-title,.editorial-title{font-family:var(--tc-royal-serif);font-weight:500;letter-spacing:-.025em}
+h1,h2,.hero__title{line-height:.98} h1{font-size:clamp(2.4rem,5vw,5.2rem)} h2{font-size:clamp(2rem,3.5vw,3.6rem)}
+.hero{isolation:isolate;background:#2b211c}.hero video{filter:saturate(.92) contrast(1.04)}.hero__scrim{background:linear-gradient(90deg,rgba(25,16,13,.72),rgba(25,16,13,.26) 60%,rgba(25,16,13,.05));transition:opacity 1s ease}
+.hero__content{animation:tcHeritageEntrance 1.1s cubic-bezier(.2,.7,.2,1) both}.hero__eyebrow,.eyebrow,.section-kicker{letter-spacing:.2em;text-transform:uppercase;color:var(--tc-royal-gold-light)}
+.hero__title{max-width:12ch;text-wrap:balance}.hero__primary,.btn--gold,.button--primary{background:var(--tc-royal-burgundy);border-color:var(--tc-royal-burgundy);color:#fffaf1;transition:transform .24s ease,background .24s ease,box-shadow .24s ease}
+.hero__primary:hover,.btn--gold:hover,.button--primary:hover{background:#4d1520;box-shadow:0 10px 26px rgba(73,22,31,.2);transform:translateY(-2px)}
+.btn--outline,.button--secondary{border-color:var(--tc-royal-gold);color:var(--tc-royal-ink)}
+.section,.editorial-section,.collection-section{position:relative}.section-heading{color:var(--tc-royal-ink)}
+/* Fine ornament: editorial separator, not heavy decorative clutter. */
+.section-heading::after{content:"";display:block;width:48px;height:1px;background:var(--tc-royal-gold);margin:.8rem auto 0;opacity:.75}
+.pcard{isolation:isolate;border-radius:2px;transition:transform .3s ease,box-shadow .3s ease}.pcard:hover{box-shadow:var(--tc-royal-shadow);transform:translateY(-3px)}
+.pcard__media{background:linear-gradient(135deg,#f6efe2,#e8ddca);border-radius:2px;overflow:hidden}.pcard__media img{will-change:transform;transition:transform .65s cubic-bezier(.2,.7,.2,1)}.pcard:hover .pcard__media img{transform:scale(1.045)}
+.pcard__name{font-family:var(--tc-royal-serif);font-size:1.22rem;font-weight:600;letter-spacing:.005em}.pcard__price{color:var(--tc-royal-burgundy);font-weight:600}.pcard__flag--sale{background:var(--tc-royal-burgundy)}
+.pcard__wish{opacity:0;transition:opacity .2s ease,transform .2s ease}.pcard:hover .pcard__wish,.pcard:focus-within .pcard__wish,.pcard__wish.is-active{opacity:1}.pcard__wish.is-active{color:var(--tc-royal-burgundy)}
+input,select,textarea,.input,.select{border-color:var(--tc-royal-border);background:var(--tc-royal-paper);border-radius:2px}input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--tc-royal-gold);outline-offset:3px}
+.card,.panel,.cart-summary,.checkout-panel,.pdp__details,.faq-item{border-color:var(--tc-royal-border);border-radius:3px}
+.pdp__title{font-size:clamp(2.25rem,4vw,3.8rem)}.pdp__actions .btn,[data-pdp-add]{min-height:48px}
+.site-footer{background:#261e1a;color:#f7efe2}.site-footer a:hover{color:var(--tc-royal-gold-light)}
+/* Cinematic scroll reveals only activate for elements explicitly marked data-reveal. */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}[data-reveal].is-revealed{opacity:1;transform:none}
+.tc-filter-scrim{position:fixed;inset:0;z-index:145;background:rgba(20,15,11,.52);opacity:0;pointer-events:none;transition:opacity .22s ease}.tc-filter-scrim.is-visible{opacity:1;pointer-events:auto}
+@media(max-width:1023px){body.tc-filters-open{overflow:hidden}.filters.is-open{display:block;position:fixed;z-index:150;inset:auto 0 0;max-height:min(82dvh,760px);overflow:auto;overscroll-behavior:contain;border:1px solid var(--tc-royal-border);border-radius:18px 18px 0 0;padding:1.1rem 1rem calc(1.2rem + env(safe-area-inset-bottom));box-shadow:0 -18px 60px rgba(22,18,14,.22);animation:tcSheetIn .24s cubic-bezier(.2,.7,.2,1) both}.filters.is-open::before{content:"";display:block;width:42px;height:4px;margin:0 auto .85rem;border-radius:99px;background:var(--tc-royal-border)}.filters.is-open .filters__head{position:sticky;top:-1.1rem;z-index:1;background:var(--tc-royal-paper);padding-block:.6rem}.filters.is-open .filter-group label{min-height:40px}.shop-toolbar__controls{width:100%}.shop-toolbar .select{flex:1;min-width:0;min-height:44px}.filter-toggle{min-height:44px}.pcard__wish{opacity:1;transform:none;width:38px;height:38px}.pcard:hover{transform:none;box-shadow:none}}
+@keyframes tcSheetIn{from{transform:translateY(18px);opacity:.7}to{transform:translateY(0);opacity:1}}
+.gallery__main{touch-action:pan-y pinch-zoom}.gallery__main img{transition:opacity .18s ease}.gallery__main img.tc-image-changing{opacity:.35}.tc-gallery-hint{display:none;color:var(--tc-royal-muted);font-size:.72rem;letter-spacing:.08em;text-align:center}@media(max-width:767px){.tc-gallery-hint{display:block}.product-grid{column-gap:.65rem;row-gap:1rem}}
+@keyframes tcHeritageEntrance{from{opacity:0;transform:translateY(18px);filter:blur(3px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero__content,[data-reveal],.filters.is-open{animation:none!important;transition:none!important;opacity:1;transform:none}.pcard,.pcard__media img,.hero__scrim,.tc-filter-scrim,.gallery__main img{transition:none!important}}
+
+
+/* Screenshot review fixes: readable heritage footer, genuinely transparent home header, and non-repetitive social gallery. */
+/* Transparent header is only overlayed on the homepage hero. The announcement bar remains separate. */
+.site-header.is-home-overlay,
+.site-header.is-home-overlay:not(.is-stuck),
+.site-header.is-home-overlay:not(.is-stuck) .header-inner,
+.site-header.is-home-overlay:not(.is-stuck) .header-side,
+.site-header.is-home-overlay:not(.is-stuck) .header-actions {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+.site-header.is-home-overlay { position: sticky; top: 0; margin-bottom: calc(-1 * var(--header-h)); z-index: 95; }
+.site-header.is-home-overlay.is-stuck {
+  background: rgba(251,247,239,.97) !important;
+  background-color: rgba(251,247,239,.97) !important;
+  border-bottom: 1px solid #e6dccb !important;
+  box-shadow: 0 10px 28px rgba(32,22,15,.09) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  backdrop-filter: blur(14px) !important;
+}
+/* The footer must remain legible even where legacy selectors set dark text colours. */
+.site-footer {
+  background: #30100f !important;
+  color: #fff5e8 !important;
+  border-top: 1px solid #6d4638 !important;
+}
+.site-footer .footer-brand p,
+.site-footer .footer-col a,
+.site-footer .footer-col p,
+.site-footer .footer-bottom,
+.site-footer .footer-legal,
+.site-footer .footer-bottom__links a {
+  color: #f0e3d2 !important;
+}
+.site-footer .footer-col h4,
+.site-footer .footer-col h3,
+.site-footer .footer-bottom a:hover,
+.site-footer .footer-col a:hover {
+  color: #e8c77e !important;
+}
+.site-footer .footer-bottom { border-top-color: rgba(232,199,126,.35) !important; }
+.site-footer a:focus-visible { outline-color: #f4d99a !important; }
+.site-footer .footer-brand img { background: transparent !important; object-fit: contain; }
+/* The social grid should show distinct content rather than four near-identical campaign crops. */
+.social-grid { gap: clamp(.45rem,1.1vw,.85rem); }
+.social-grid > a { overflow: hidden; position: relative; background: #eadfcd; }
+.social-grid > a img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease, filter .35s ease; }
+.social-grid > a:hover img { transform: scale(1.035); filter: saturate(1.04); }
+.social-grid > a span { background: linear-gradient(transparent,rgba(28,16,13,.78)); color: #fff8ed; }
+/* Keep mobile controls visible and thumb-friendly while maintaining V8's navigation layout. */
+@media(max-width:759px) {
+  .site-header.is-home-overlay .header-inner { min-height: var(--header-h); }
+  .site-header.is-home-overlay:not(.is-stuck) .nav-link,
+  .site-header.is-home-overlay:not(.is-stuck) .icon-btn { color: #fffaf1; text-shadow: 0 1px 8px rgba(20,12,8,.48); }
+  .site-footer .footer-top { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem 1rem; }
+  .site-footer .footer-brand { grid-column: 1 / -1; }
+  .site-footer .footer-brand img { width: 148px; }
+  .site-footer .footer-col a, .site-footer .footer-col p { overflow-wrap: anywhere; line-height: 1.65; }
+  .social-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .social-grid > a { aspect-ratio: 1 / 1.12; }
+}
+@media(min-width:760px) {
+  .social-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .social-grid > a img { transition: none !important; }
+}
