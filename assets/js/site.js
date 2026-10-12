@@ -689,21 +689,46 @@
     var video = qs('.hero__media');
     if (!video) return;
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    function apply() {
-      if (reduced.matches) { try { video.pause(); } catch (e) {} }
-      else { var play = video.play(); if (play && play.catch) play.catch(function () {}); }
+    var mobile = window.matchMedia('(max-width: 767px)');
+    var fallback = qs('.hero__fallback');
+    var activeSource = '';
+    var inView = true;
+
+    function pauseVideo() { try { video.pause(); } catch (e) {} }
+    function applyPlayback() {
+      if (reduced.matches || document.hidden || !inView) { pauseVideo(); return; }
+      var play = video.play();
+      if (play && play.catch) play.catch(function () {});
     }
-    apply();
-    if (reduced.addEventListener) reduced.addEventListener('change', apply);
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { try { video.pause(); } catch (e) {} }
-      else apply();
-    });
+    function updateResponsiveMedia() {
+      var isMobile = mobile.matches;
+      var source = video.getAttribute(isMobile ? 'data-mobile-src' : 'data-desktop-src');
+      var poster = video.getAttribute(isMobile ? 'data-mobile-poster' : 'data-desktop-poster');
+      var fallbackSource = fallback && fallback.getAttribute(isMobile ? 'data-mobile-src' : 'data-desktop-src');
+
+      if (poster && video.getAttribute('poster') !== poster) video.setAttribute('poster', poster);
+      if (fallback && fallbackSource && fallback.getAttribute('src') !== fallbackSource) {
+        fallback.setAttribute('src', fallbackSource);
+      }
+      if (!source || source === activeSource) { applyPlayback(); return; }
+      pauseVideo();
+      activeSource = source;
+      video.src = source;
+      video.load();
+      applyPlayback();
+    }
+
+    updateResponsiveMedia();
+    if (mobile.addEventListener) mobile.addEventListener('change', updateResponsiveMedia);
+    else if (mobile.addListener) mobile.addListener(updateResponsiveMedia);
+    if (reduced.addEventListener) reduced.addEventListener('change', applyPlayback);
+    else if (reduced.addListener) reduced.addListener(applyPlayback);
+    document.addEventListener('visibilitychange', applyPlayback);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) apply();
-          else { try { video.pause(); } catch (e) {} }
+          inView = entry.isIntersecting;
+          applyPlayback();
         });
       }, { threshold: 0.15 }).observe(video);
     }

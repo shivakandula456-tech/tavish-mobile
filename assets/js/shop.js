@@ -176,7 +176,7 @@
     var ledeEl = T.qs('[data-shop-lede]');
     if (ledeEl) {
       var total = store.products.publicList().length;
-      ledeEl.textContent = (total === 1 ? '1 piece' : total + ' pieces') + ' across five families — every one finished with an anti-tarnish coating and packed by hand in Wagholi, Pune.';
+      ledeEl.textContent = (total === 1 ? '1 piece' : total + ' pieces') + ' across five families — every one finished with an anti-tarnish coating and packed by hand in New Kalyani Nagar, Pune.';
     }
     if (titleEl) {
       if (state.category.length === 1) {

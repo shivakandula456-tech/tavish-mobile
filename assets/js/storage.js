@@ -21,7 +21,7 @@
     storageNotice: 'tavish_storage_notice'
   };
 
-  var SEED_VERSION = 4;
+  var SEED_VERSION = 5;
   var PUB_STATUS = 'ACTIVE';
 
   var storageOK = (function () {
@@ -96,7 +96,19 @@
         write(KEYS.orders, []);
       }
       var migratedSettings = read(KEYS.settings, null);
-      write(KEYS.settings, mergeDeep(window.TAVISH_SEED_SETTINGS || {}, migratedSettings || {}));
+      var mergedSettings = mergeDeep(window.TAVISH_SEED_SETTINGS || {}, migratedSettings || {});
+      mergedSettings.contact = mergedSettings.contact || {};
+      mergedSettings.contact.email = 'tanvianikhindi281@gmail.com';
+      mergedSettings.contact.whatsappNumber = '919137961623';
+      mergedSettings.contact.whatsappDisplay = '+91 91379 61623';
+      mergedSettings.contact.location = 'New Kalyani Nagar, Pune, Maharashtra - 411014';
+      mergedSettings.contact.locationNote = 'New Kalyani Nagar, Pune, Maharashtra - 411014.';
+      mergedSettings.social = mergedSettings.social || {};
+      mergedSettings.social.instagram = 'https://www.instagram.com/tavishandco_/?vrfl=MXJ6anJ6cTBjcXpjOQ%3D%3D&utm_source=qr';
+      delete mergedSettings.social.facebook;
+      delete mergedSettings.social.pinterest;
+      delete mergedSettings.social.youtube;
+      write(KEYS.settings, mergedSettings);
       var seededProducts = window.TAVISH_SEED_PRODUCTS || [];
       var existingProducts = read(KEYS.products, []) || [];
       existingProducts = existingProducts.map(function (p) {
@@ -107,6 +119,22 @@
         return p;
       });
       write(KEYS.products, existingProducts);
+      write(KEYS.seedVersion, SEED_VERSION);
+    } else if (version < 5) {
+      // One-time contact migration: replace stale phone/address/social details on existing browsers.
+      var currentSettings = read(KEYS.settings, {}) || {};
+      currentSettings.contact = currentSettings.contact || {};
+      currentSettings.contact.email = 'tanvianikhindi281@gmail.com';
+      currentSettings.contact.whatsappNumber = '919137961623';
+      currentSettings.contact.whatsappDisplay = '+91 91379 61623';
+      currentSettings.contact.location = 'New Kalyani Nagar, Pune, Maharashtra - 411014';
+      currentSettings.contact.locationNote = 'New Kalyani Nagar, Pune, Maharashtra - 411014.';
+      currentSettings.social = currentSettings.social || {};
+      currentSettings.social.instagram = 'https://www.instagram.com/tavishandco_/?vrfl=MXJ6anJ6cTBjcXpjOQ%3D%3D&utm_source=qr';
+      delete currentSettings.social.facebook;
+      delete currentSettings.social.pinterest;
+      delete currentSettings.social.youtube;
+      write(KEYS.settings, mergeDeep(window.TAVISH_SEED_SETTINGS || {}, currentSettings));
       write(KEYS.seedVersion, SEED_VERSION);
     } else if (version !== SEED_VERSION) {
       write(KEYS.seedVersion, SEED_VERSION);
@@ -668,7 +696,7 @@
 
   function whatsappLink(message) {
     var s = settings.get().contact || {};
-    var number = String(s.whatsappNumber || '919921318679').replace(/[^0-9]/g, '');
+    var number = String(s.whatsappNumber || '919137961623').replace(/[^0-9]/g, '');
     return 'https://wa.me/' + number + '?text=' + encodeURIComponent(message || '');
   }
 

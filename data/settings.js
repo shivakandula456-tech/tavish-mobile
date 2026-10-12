@@ -9,10 +9,10 @@ window.TAVISH_SEED_SETTINGS = {
   },
   contact: {
     email: 'tanvianikhindi281@gmail.com',
-    whatsappNumber: '919921318679',
-    whatsappDisplay: '+91 99213 18679',
-    location: 'Wagholi, Pune, Maharashtra, India',
-    locationNote: 'Wagholi, Pune is our current business location for correspondence. It is not presented as an official showroom, flagship store or registered office.',
+    whatsappNumber: '919137961623',
+    whatsappDisplay: '+91 91379 61623',
+    location: 'New Kalyani Nagar, Pune, Maharashtra - 411014',
+    locationNote: 'New Kalyani Nagar, Pune, Maharashtra - 411014.',
     hours: 'Monday – Saturday, 10:00 – 19:00 IST'
   },
   commerce: {
@@ -28,10 +28,7 @@ window.TAVISH_SEED_SETTINGS = {
     cancellationWindowHours: 24
   },
   social: {
-    instagram: '#',
-    facebook: '#',
-    pinterest: '#',
-    youtube: '#'
+    instagram: 'https://www.instagram.com/tavishandco_/?vrfl=MXJ6anJ6cTBjcXpjOQ%3D%3D&utm_source=qr'
   },
   seo: {
     base: 'https://tavishandco.example',

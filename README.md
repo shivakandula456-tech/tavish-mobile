@@ -15,7 +15,7 @@ The storefront and administration pages share browser `localStorage` on the same
 - 24 initial catalogue products with four product images each.
 - 94 stock/reference images distributed as editorial/style-inspiration imagery and available in the Admin Media Library.
 - Cart and wishlist persisted in `localStorage`.
-- Cash-on-delivery checkout with validation and WhatsApp hand-off to +91 99213 18679.
+- Cash-on-delivery checkout with validation and WhatsApp hand-off to +91 91379 61623.
 - Floating WhatsApp Enquiry control across the public website.
 - Product-specific WhatsApp enquiries containing product name and SKU.
 - Shop filtering, URL-synced categories/flags, sorting and search.
